@@ -21,39 +21,45 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
+            anim.enabled = true;
             anim.SetTrigger("Backward");
+            
         }
          if (Input.GetKeyUp(KeyCode.S))
         {
-
+            anim.enabled = false;
         }
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
+            anim.enabled = true;
             anim.SetTrigger("Forward");
         }
          if (Input.GetKeyUp(KeyCode.W))
         {
-
+            anim.enabled = false;
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
+            anim.enabled = true;
             anim.SetTrigger("Right");
         }
          if (Input.GetKeyUp(KeyCode.D))
         {
-
+            anim.enabled = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
+            anim.enabled = true;
             anim.SetTrigger("Left");
         }
          if (Input.GetKeyUp(KeyCode.A))
         {
-
+            anim.enabled = false;
         }
+
 
     }
 

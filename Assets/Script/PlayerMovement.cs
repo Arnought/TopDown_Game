@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.PlayerLoop;
+using TMPro;
 
 
 public class PlayerMovement : MonoBehaviour
@@ -12,6 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rigidbodyGO;
     public Animator anim;
     // Start is called before the first frame update
+    public int coinCounter;
+    public int healthPoints;
+    public TextMeshProUGUI healthcounter, coinsCounter;
     void Start()
     {
         rigidbodyGO = GetComponent<Rigidbody2D>();
@@ -21,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        /*if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             anim.enabled = true;
             anim.SetTrigger("Backward");
@@ -58,9 +62,26 @@ public class PlayerMovement : MonoBehaviour
          if (Input.GetKeyUp(KeyCode.A))
         {
             anim.enabled = false;
+        }*/
+
+        healthcounter.text = healthPoints.ToString();
+        coinsCounter.text = coinCounter.ToString();
+
+        anim.SetFloat("Horizontal", movementInput.x);
+        anim.SetFloat("Vertical", movementInput.y);
+        anim.SetFloat("Speed", movementInput.sqrMagnitude);
+       
+        movementInput.x = Input.GetAxisRaw("Horizontal");
+        movementInput.y = Input.GetAxisRaw("Vertical");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Coins"))
+        {
+            coinCounter++;
+            Destroy(collision.gameObject);
         }
-
-
     }
 
     private void FixedUpdate()
@@ -72,6 +93,8 @@ public class PlayerMovement : MonoBehaviour
     {
         movementInput = inputValue.Get<Vector2>();
     }
+
+
 
 
 }

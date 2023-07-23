@@ -13,9 +13,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rigidbodyGO;
     public Animator anim;
     // Start is called before the first frame update
-    public int coinCounter;
-    public int healthPoints;
+    public int coinCounter, healthPoints, speedPowerUpValue, duration;
     public TextMeshProUGUI healthcounter, coinsCounter;
+    private float basemovespeed = 3;
     void Start()
     {
         rigidbodyGO = GetComponent<Rigidbody2D>();
@@ -82,6 +82,25 @@ public class PlayerMovement : MonoBehaviour
             coinCounter++;
             Destroy(collision.gameObject);
         }
+
+        if(collision.CompareTag("health_pwr"))
+        {
+            healthPoints += 5;
+            Destroy(collision.gameObject);
+        }
+
+        if(collision.CompareTag("spd_pwr"))
+        {
+            moveSpeed += speedPowerUpValue;
+            Destroy(collision.gameObject);
+            StartCoroutine(returnToBaseSpeed());
+        }
+    }
+
+    IEnumerator returnToBaseSpeed()
+    {
+        yield return new WaitForSeconds(duration);
+        moveSpeed = basemovespeed;
     }
 
     private void FixedUpdate()
@@ -93,8 +112,5 @@ public class PlayerMovement : MonoBehaviour
     {
         movementInput = inputValue.Get<Vector2>();
     }
-
-
-
 
 }

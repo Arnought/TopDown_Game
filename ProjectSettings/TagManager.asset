@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coins
+  - health_pwr
+  - spd_pwr
   layers:
   - Default
   - TransparentFX
@@ -48,6 +50,9 @@ TagManager:
   - name: floor
     uniqueID: 2352273633
     locked: 0
+  - name: traps
+    uniqueID: 1798298553
+    locked: 0
   - name: player
     uniqueID: 1510157371
     locked: 0
@@ -57,9 +62,6 @@ TagManager:
   - name: chest
     uniqueID: 2513378421
     locked: 0
-  - name: traps
-    uniqueID: 1798298553
-    locked: 0
   - name: coin
     uniqueID: 2327927459
     locked: 0
@@ -68,4 +70,7 @@ TagManager:
     locked: 0
   - name: coin_counter
     uniqueID: 962191077
+    locked: 0
+  - name: powerups
+    uniqueID: 2451160131
     locked: 0

@@ -7,6 +7,7 @@ public class TrapAnimation : MonoBehaviour
     public Animator anim;
     public PlayerMovement playerMovement;
     public int trapDamage;
+    public bool playerOnTop;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,7 @@ public class TrapAnimation : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        playerOnTop = true;
         if (collision.CompareTag("Player"))
         {
             anim.SetBool("isActive", true);
@@ -23,12 +25,17 @@ public class TrapAnimation : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        playerOnTop = false;
         anim.SetBool("isActive", false);
 
     }
 
     public void PlayerDamage()
     {
-        playerMovement.healthPoints = playerMovement.healthPoints - trapDamage;
+        if(playerOnTop)
+        {
+            playerMovement.healthPoints -= trapDamage;
+        }
+
     }
 }

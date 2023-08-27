@@ -17,13 +17,7 @@ public class Restart_Exit : MonoBehaviour
         
     }
 
-    public void RestartTheGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
 
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
+
+
 }

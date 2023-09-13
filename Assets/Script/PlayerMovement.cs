@@ -12,10 +12,11 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 movementInput;
     public Rigidbody2D rigidbodyGO;
     public Animator anim;
-    // Start is called before the first frame update
     public int coinCounter, healthPoints, speedPowerUpValue, duration;
     public TextMeshProUGUI healthcounter, coinsCounter;
     private float basemovespeed = 3;
+
+    
     void Start()
     {
         rigidbodyGO = GetComponent<Rigidbody2D>();

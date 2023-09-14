@@ -22,19 +22,19 @@ public class PlayerCombat : MonoBehaviour
     {
         animator.SetTrigger("Attack");
 
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackpoint.position, attackRange, enemyLayers);
+        // Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackpoint.position, attackRange, enemyLayers);
 
-        foreach(Collider2D enemy in  hitEnemies)
-        {
-            Debug.Log("We hit " + enemy.name)
-        }
+        // foreach(Collider2D enemy in  hitEnemies)
+        // {
+        //     Debug.Log("We hit " + enemy.name)
+        // }
     }
 
-    private void OnDrawGizmosSelected() 
-    {
-        if(attackpoint == null)
-            return;
+    // private void OnDrawGizmosSelected() 
+    // {
+    //     if(attackpoint == null)
+    //         return;
 
-        Gizmos.DrawWireSphere(attackpoint.position, attackRange);
-    }
+    //     Gizmos.DrawWireSphere(attackpoint.position, attackRange);
+    // }
 }
